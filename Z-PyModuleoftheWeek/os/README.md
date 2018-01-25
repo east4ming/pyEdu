@@ -111,3 +111,12 @@ system（）的返回值是运行程序的shell的输出值，打包成一个16�
 除非命令在后台显式运行，否则对system（）的调用会阻塞，直到完成为止。子进程的标准输入，输出和错误默认与调用方拥有的相应流相关联，但可以使用shell语法重定向。
 
 > 具体见`os_system_background.py`
+
+## 用os.fork（）创建进程
+
+posix函数fork（）和exec（）（在mac os x，linux和其他unix变体下可用）通过os模块公开。
+创建一个新的进程作为当前进程的克隆，使用fork（）：
+
+> 具体见`os_fork_example.py`
+
+
