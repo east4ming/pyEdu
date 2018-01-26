@@ -1,0 +1,3 @@
+{
+    "python.autoComplete.preloadModules": ["sys", "time", "os"]
+}
