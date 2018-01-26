@@ -281,3 +281,61 @@ print(sys.byteorder)
 > - - `float.h` – The C header file for the local compiler contains
 >
 >     more details about these settings.
+
+## 异常处理
+
+sys包含用于捕获和处理异常的功能。
+
+### 未处理的异常
+
+许多应用程序的结构都是一个主循环，它将执行封装在全局异常处理程序中，以捕获不在较低级别处理的错误。另一种实现同样事情的方法是将sys.excepthook设置为一个带有三个参数（错误类型，错误值和回溯）的函数，并让它处理未处理的错误。
+
+> 具体见`sys_exceptionhook.py`
+
+因为没有`try: except`块, 引发异常，即使设置了异常挂钩，下面的print（）调用也不会运行。
+
+### 当前异常
+
+有些时候显式的异常处理程序是首选的，无论是为了清晰的代码，或避免与试图安装自己的excepthook库的冲突。在这些情况下，通过调用exc_info（）来检索线程的当前异常，可以创建一个通用的处理函数，该函数不需要明确地传递异常对象。
+
+> 具体见`sys_exc_info.py`
+
+这个例子避免了在traceback对象和当前帧中的局部变量之间引入一个循环引用，忽略exc_info（）的那部分返回值。如果需要回溯（例如，可以记录），则显式删除本地变量（使用del）以避免周期。
+
+### 以前的互动例外
+
+在交互式解释器中，只有一个交互线程。该线程中未处理的异常保存到`sys`（`last_type`，`last_value`和`last_traceback`）中的三个变量中，以便于检索它们以进行调试。使用pdb中的postmortem调试器可以避免直接使用这些值。
+
+```python
+$ python3
+Python 3.4.2 (v3.4.2:ab2c023a9432, Oct  5 2014, 20:42:22)
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> def cause_exception():
+...     raise RuntimeError('This is the error message')
+...
+>>> cause_exception()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in cause_exception
+RuntimeError: This is the error message
+>>> import pdb
+>>> pdb.pm()
+> <stdin>(2)cause_exception()
+(Pdb) where
+  <stdin>(1)<module>()
+> <stdin>(2)cause_exception()
+(Pdb)
+```
+
+> **参见:**
+> - exceptions - 内置错误
+> - pdb - Python调试器
+> - traceback - Module for working with tracebacks
+
+## 低级别线程支持
+
+> 待补充
+## 模块和导入
+
+> 待补充
