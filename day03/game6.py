@@ -45,9 +45,9 @@ while True:
     if i != 0:
         counter += 1
         result += i
-    if counter == 3:
+    if counter >= 2 and result != 0:
         if result > 0:
             print('\033[31;1mFinally: You win!!!\033[0m')
-        elif result < 0:
+        else:
             print('\033[31;1mFinally: You lose!!!\033[0m')
         break
