@@ -14,12 +14,13 @@ import string
 
 def gen_passwd(length=8):
     """main func."""
-    f_password = random.choice(list(string.ascii_letters))
+    f_password = random.choice(string.ascii_letters)
     m_password = ''
     for i in range(length-2):
-        m_password += random.choice(list(string.ascii_letters+string.digits+string.punctuation))
-    l_password = random.choice(list(string.ascii_letters+string.digits))
+        m_password += random.choice(string.ascii_letters+string.digits+string.punctuation)
+    l_password = random.choice(string.ascii_letters+string.digits)
     return f_password + m_password + l_password
+
 
 if __name__ == '__main__':
     print(gen_passwd())
