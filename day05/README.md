@@ -90,3 +90,156 @@ if __name__ == '__main__':
 2. 以存在, 要求重新输入
 3. 提示输入数据, 每行数据先写到列表中
 4. 将列表数据写道用户输入的文件名中
+
+## 列表推导式
+
+```python
+[x*x for x in range(1, 6) if x%2==0]
+```
+
+## 序列对象
+
+### 共有操作
+
+- `seq[ind]`
+- `seq[ind1:ind2:step]`
+- `seq * expr`
+- `seq1 + seq2`
+- `obj in seq`  `obj not in seq`
+- `s.index(x)`
+- `s.count(x)` - s序列中x的出现次数
+### 内建函数
+
+- `list(iter)`
+- `tuple(iter)`
+- `str(obj)`
+- `len(seq)`
+- `max(iter, key=None)`  `min(iter, key=None)`
+- `enumerate(iter)`
+- `reversed()`
+- `sorted()`
+
+```python
+alist = ['abc', 'def', 'xgsd']
+for ind in range(len(alist)):
+    print('{}: {}'.format(ind, alist[ind]))
+for ind, val in enumerate(alist):
+    print('{}: {}'.format(ind, val))
+```
+
+### 字符串操作
+
+- `ord(a)` - 返回对应的ascii码数字
+- 比较操作 - 按ascii比较
+- 小写字母从97开始, 大写字母从65开始
+
+### 作业
+
+#### 检查标示符
+
+1. 接受用户输入
+2. 判断用户输入的标示符是否合法
+3. 用户输入的标示符不能使用关键字
+4. 有不合法字符, 需要指明第几个不合法
+
+### 格式化输出
+
+- `%c` - 根据ascii转换为字符
+- `%s`
+- `%d` - 转换成整数
+- `%o` - 转换为无符号八进制输出
+- `%#o` - 转换为带前缀的
+- `%#x` - 十六进制
+- `%e` - 科学记数法
+- `%f` - 浮点数
+- `%4.2f` - 总宽度为4, 小数位占2位
+- `%12s%-8s` - 第一个占12个宽度, 右对齐; 第二个占8个宽度, 左对齐
+- `% d` 正整数前面空格, 负整数前面没有空格
+- `%+d` 正整数前面'+'填充
+- `%010d` 用0填充, 10位
+
+#### format 方法
+
+语法:
+```
+replacement_field ::=  "{" [field_name] ["!" conversion] [":" format_spec] "}"
+field_name        ::=  arg_name ("." attribute_name | "[" element_index "]")*
+arg_name          ::=  [identifier | integer]
+attribute_name    ::=  identifier
+element_index     ::=  integer | index_string
+index_string      ::=  <any source character except "]"> +
+conversion        ::=  "r" | "s" | "a"
+format_spec       ::=  <described in the next section>
+```
+
+一些简单的示例:
+```python
+"First, thou shalt count to {0}"  # References first positional argument
+"Bring me a {}"                   # Implicitly references the first positional argument
+"From {} to {}"                   # Same as "From {0} to {1}"
+"My quest is {name}"              # References keyword argument 'name'
+"Weight in tons {0.weight}"       # 'weight' attribute of first positional arg
+"Units destroyed: {players[0]}"   # First element of keyword argument 'players'.
+```
+
+关于conversion的用法示例:
+```python
+"Harold's a clever {0!s}"        # Calls str() on the argument first
+"Bring out the holy {name!r}"    # Calls repr() on the argument first
+"More {!a}"                      # Calls ascii() on the argument first
+```
+
+format_spec相关用法:
+```
+format_spec     ::=  [[fill]align][sign][#][0][width][grouping_option][.precision][type]
+fill            ::=  <any character>
+align           ::=  "<" | ">" | "=" | "^"
+sign            ::=  "+" | "-" | " "
+width           ::=  integer
+grouping_option ::=  "_" | ","
+precision       ::=  integer
+type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X
+```
+
+#### 案例 - 创建用户
+
+1. 实现创建用户功能
+2. 提示输入用户名
+3. 随机生成8位密码
+4. 创建用户并设置密码
+5. 将用户相关信息写入指定文件
+
+### 字符串内建函数
+
+- `str.endswith()` `str.startswith()`
+- `str.center()` `str.ljust()` `str.rjust()`
+- `str.capitalize()` `str.title()` 
+- `str.count()`
+- `str.isupper()` `str.islower()` 
+- `str.isdigits()` `str.isalpha()` `str.isalnum()`
+- `str.upper()` `str.lower()`
+- `str.strip()` `str.lstrip()` `str.rstrip()`
+- `str.split()`
+
+### 列表
+
+- `lst.append()`
+- `lst.insert(1, 15)` 在下标位1的位置写入15
+- `lst.count()`
+- `lst.index()`
+- `lst.pop()` 移除列表最后一个, 并返回该值
+- `lst.pop(2)` 下标为2
+- `lst.remove('bob)`  将bob从列表中remove
+- `lst.sort()` 改变列表本身(字符串和数字sort会报错)
+- `lst.reverse()` 
+- `lst.copy()` 只将值拷贝到新列表
+- `lst.clear()` 清空
+- `lst.extend()` 
+
+### 作业
+
+列表构建栈结构
+
+1. 后进先出
+2. 用列表实现
+3. 支持压栈, 出栈, 查询功能
