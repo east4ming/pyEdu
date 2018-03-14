@@ -74,3 +74,30 @@ def func(num):
      else:
          return num * func(num - 1)
 ```
+
+## 要点
+
+字典Value为函数:
+`ops = {'+': add, '-': sub}`
+
+`random.choice()`参数可以为字符串: `op = choice('+-')`
+列表解析式: `nums = [randint(1, 10) for i in range(2)]`
+对之前字典Value为函数的操作以及不定参数: `ans = ops[op](*nums)`
+`except`可以后跟元组, 包含多个异常: `except (KeyboardInterrupt, EOFError, ValueError)`
+
+### 装饰器
+
+- 入参是**函数对象**，
+- 返回是**函数对象**
+
+```
+@make_bold
+def get_content():
+    return 'hello world'
+
+# 上面的代码等价于下面的
+
+def get_content():
+    return 'hello world'
+get_content = make_bold(get_content)
+```
