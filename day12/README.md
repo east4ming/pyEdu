@@ -92,4 +92,112 @@ vars()返回一个字典, 包含了对象存储于其`__dict__`中的属性(key)
 
 ## 用特殊方法定制类
 
+特殊方法可以:
+
+- 模拟标准类型
+- 重载操作符(+-*/, 下标, 映射)
+
+以双下划线(__)开头和结尾.
+
+### 基本定制型
+
+- `__init__`  构造器
+- `__new__` 构造器(通常用在设置不变数据类型的子类)
+- `__del__` 解构器
+- `C.__str__(self)` 可打印的字符输出: 内建str()及print语句
+- `C.__repr__(self)` 运行时的字符串输出; 内建repr()和''操作符
+- `C.__unicode__(self)` Unicode字符串输出; 内建unicode()
+- `C.__call__(self, *args, **kwargs)` 可调用的实例
+- `__nonzero__` 为object定义False值; 内建bool()
+- `__len__` 长度(可用于类); 内建len()
+
+### 对象(值)比较
+
+- `__cmp__(self, obj)` 对象比较; 内建cmp()
+- `__lt__` le eq ne gt ge < <= = != > >=
+
+### 属性
+
+- `__getattr__(self, attr)` 获取属性; 内建getattr(); 仅当属性没有找到时调用
+- `__setattr__(self, attr, val)` 设置属性
+- `__delattr__(self, attr)` 删除属性
+- `__getattribute__(self, attr)` 获取属性; 内建 getattr(); 总是被调用
+- `__get__(self, attr)` (描述符)获取属性
+- `__set__(self, attr, val)` (描述符)获取属性
+- `__delete__(self, attr)` (描述符)删除属性
+
+### 模拟类型
+
+#### 数值类型: 二元操作符
+
+- `__add__(self, obj)` sub mul
+- truediv /
+- floordiv //
+- mod %
+- divmod divmod()
+- pow pow() **
+- lshift <<
+- rshift >>
+- and &
+- or |
+- xor ^
+
+#### 数值类型: 增量赋值
+
+- iadd isub imul imatmul itruediv ifloordiv imod ipow ilshift irshfit iand ixor ior += ...
+
+#### 数值类型: 一元操作符
+
+- neg 负
+- pos 正
+- abs 绝对值; 内建abs()
+- invert按位求反; ~ 操作符
+
+#### 数值类型: 数值转换
+
+- complex 转为complex(复数); 内建complex()
+- int
+- float
+- round
+
+#### 数值类型: 数值压缩
+
+- index
+
+#### 序列/映射类型
+
+- len 序列中项的数目
+- getitem(self, key) 得到单个序列元素
+- setitem(self, key, val) 设置单个序列元素
+- delitem(self, key) 删除单个序列元素
+- contains 测试序列成员; 内建in关键字
+- reversed reversed()
+- hash
+- missing(self, key) 给定键如果不存在字典中, 则提供一个默认值
+
+#### with
+
+- `__enter__(self)`
+- `__exit__(self, exc_type, exc_value, traceback)`
+
+### 简单实现(RoundFloat2)
+
+> 见*round_float2.py*
+
+### 数值定制(Time60)
+
+用来操作时间, 精确到小时和分.
+
+> 具体见*time60.py*
+
+### 迭代器
+
+> 见*rand_seq.py*和*any_iter.py*
+
+### 多类型定制
+
+创建一个新类, NumStr, 由一个数字-字符对组成, 几位n和s, 数值为int.
+
+> 具体见*numstr.py*
+
 
