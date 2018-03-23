@@ -41,3 +41,12 @@ if __name__ == '__main__':
     # "作弊"方法, 访问get(), 得到实际对象
     real_list = wrapped_list.get()
     print(real_list[3])
+    # 文件
+    f = WrapMe(open('README.md'))
+    print(f)
+    print(f.get())
+    print(f.readline())
+    print(f.tell())
+    print(f.seek(0))
+    f.close()
+    f.get()
