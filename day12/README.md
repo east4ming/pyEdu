@@ -226,3 +226,117 @@ vars()返回一个字典, 包含了对象存储于其`__dict__`中的属性(key)
 - 访问时间: 最后一次对象的数据值被获取或者属性被访问的时间戳.
 
 > 见*twrapme.py*
+
+## 新式类的高级特性
+
+### 通用特性
+
+工厂函数:
+
+- int() float() complex()
+- str()
+- list() tuple()
+- type()
+- dict()
+- bool()
+- set() fronzenset()
+- object()
+- classmethod()
+- staticmethod()
+- super()
+- property()
+- file()
+
+测试一个对象是否是一个整形:
+```
+if isinstance(obj, int)...
+if isinstance(obj, (int, float))
+if type(obj) is int...
+```
+isinstance()没有执行"严格比较" -- 如果obj是一个给定类型的实例或者其子类的实例, 也会返回True.
+如果想要进行严格匹配, 仍然需要使用is 操作符.
+
+### __slots__ 类属性
+
+`__dict__` 属性跟踪所有实例属性. 如, inst.foo可以使用 inst.__dict__['foo']来访问.
+字典会占据大量内存, 如果有一个属性数量很少的类, 但有很多实例, 为了内存空间的考虑, 现在可以使用 `__slots__` 属性来替代 `__dict__`
+`__slots__`是一个类变量, 由一序列型对象组成, 由所有合法标识构成的实例属性的集合来表示.
+它可以是一个列表, 元组或可迭代对象. 也可以是标识实例能拥有的唯一的属性的简单字符串.
+任何试图创建一个其名不在`__slots__`中的名字的实例属性都将导致 AttributeError 异常.
+
+```
+class SlottedClass():
+    __slots__ = ('foo', 'bar')
+
+c = SlottedClass()
+c.foo = 42
+c.foo
+Out[18]: 42
+c.xxx = 'dont think so'
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\IPython\core\interactiveshell.py", line 2910, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-19-d75ec391c02a>", line 1, in <module>
+    c.xxx = 'dont think so'
+AttributeError: 'SlottedClass' object has no attribute 'xxx'
+```
+
+这种特性主要目的是节约内存. 副作用是某种类型的"安全", 能防止用户随心所欲的动态增加实例属性.
+带`__slots__`属性的类定义不会存在`__dict__` (除非在`__slots__`中增加`'__dict__'`元素).
+
+### `__getattribute__()` 特殊方法
+
+类似于`__getattr__()`, 不同之处在于, 当属性被访问时, 它就一直都可以被调用, 而不局限于找不到的情况.
+
+### 描述符
+
+描述符是Python 新式类中的关键点之一. 为对象**属性**提供强大的API. 可以认为描述符是表示对象属性的一个代理.
+当需要属性时, 可根据实际情况, 通过描述符(如果有)或采用常规(句点属性标识法)来访问它.
+
+#### `__get()__ __set__() __delete__()` 特殊方法
+
+描述符可以是任何新式类, 这种类至少实现了三个特殊方法`__get__()` `__set__()` `__delete__()`中的一个,
+这三个特殊方法充当描述符协议的作用.
+
+如果想要为一个属性写个代理, 必须把它作为一个**类*的属性, 让这个代理来为我们做所有的工作.
+
+#### `__getattribute__()` 特殊方法
+
+#### 优先级别
+
+1. 类属性
+2. 数据描述符 如: 同时定义了__get__() 和 __set__()
+3. 实例属性 如: __dict__() 等
+4. 非数据描述符 之定义了__get__()
+5. 默认为`__getattr__()`
+
+#### 案例: 使用文件来存属性
+
+> 见*descr.py*
+
+#### 描述符总结
+
+非绑定:
+
+- 函数
+- 静态方法
+
+绑定:
+
+- 方法
+- 类方法
+
+#### 属性和`property()`内建函数
+
+用来处理所有对**实例属性**的访问, 工作方式和描述符相似.
+"一般"情况下, 使用点属性符号来处理一个实例属性时, 其实是在修改这个实例的`__dict__`属性.
+
+property() 内建函数有4个参数:
+`property(fget=None, fset=None, fdel=None, doc=None)`
+
+property()一般用法: 将它写在一个类定义中, property()接受一些传进来的函数(其实是方法)作为参数.
+实际上, property()是在它所在的类被创建时被调用的, 这些传进来(作为参数的)方法是非绑定的, 所以这些方法其实就是函数.
+
+例子, 在类中建立一个只读的整形属性, 用按位异或操作符将它隐藏起来.
+
+> 见*protect_hide_x.py*
