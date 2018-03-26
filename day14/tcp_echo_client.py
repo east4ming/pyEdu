@@ -20,20 +20,22 @@ class TCPEchoClient():
         2. 接受信息
         3. 关闭socket连接
 
-        TODO:
+        异常处理:
         - 断言非空, 为空抛出异常
-        - 异常处理更友好
+        - 捕获3类异常(EOFError: UNIX上为Ctrl+d,Windows上为Ctrl+Z+Enter), 跳出循环
+        - 关闭socket连接.
         """
         while True:
             try:
                 data = input('> ')
-            except (EOFError, KeyboardInterrupt):
+                assert data
+            except (EOFError, KeyboardInterrupt, AssertionError) as e:
+                print('用户输入异常或为空, 退出...', e, sep='\n\t')
                 break
             else:
                 self.cli_sock.sendall(bytes(data, encoding='utf8'))
             srv_msg = self.cli_sock.recv(16)
             print(srv_msg)
-
         self.cli_sock.close()
 
 

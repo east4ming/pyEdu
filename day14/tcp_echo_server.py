@@ -16,11 +16,23 @@ class TCPEchoServer():
         self.srv_sock.listen(1)
 
     def handle_msg(self, conn):
-        """处理socket信息, 接受信息并发送同样信息."""
+        """处理socket信息, 接受信息并发送同样信息.
+
+        增加异常处理:
+        断言接收的msg不为空;
+        为空则抛出异常, 捕获异常并break跳出循环.
+        跳出循环后关闭该conn
+        """
         while True:
-            msg = conn.recv(16)
-            print(msg)
-            conn.sendall(msg)
+            try:
+                msg = conn.recv(16)
+                assert msg
+            except AssertionError:
+                print('用户输入为空或异常, 忽略...')
+                break
+            else:
+                print(msg)
+                conn.sendall(msg)
 
     def mainloop(self):
         """主循环. 正常情况下永不停止.
@@ -29,9 +41,11 @@ class TCPEchoServer():
         2. 调用处理信息的方法
         3. 关闭socket连接
         """
+        print('TCPEchoServer Running...')
         while True:
             conn, client_addr = self.srv_sock.accept()
             self.handle_msg(conn)
+            conn.close()
 
 
 if __name__ == '__main__':
