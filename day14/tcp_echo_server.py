@@ -44,6 +44,7 @@ class TCPEchoServer():
         print('TCPEchoServer Running...')
         while True:
             conn, client_addr = self.srv_sock.accept()
+            print('Connection from {}'.format(client_addr))
             self.handle_msg(conn)
             conn.close()
 
