@@ -96,7 +96,7 @@ UDP(用户数据报)协议 - SOCK_DGRAM (datagram, 数据报)
 1. 类: `BaseServer`  概述: 包含服务器的核心功能与混合(mix-in)类挂钩; 这个类只用于派生, 所以不会生成这个类的实例; 可以考虑使用TCPServer和UDPServer
 2. `TCPServer/UDPServer` 基本的网络同步TCP/UDP服务器
 3. `UnixStreamServer/UnixDatagramServer` 基本的基于文件同步的TCP/UDP服务器
-4. `ForkingMixIn/ThreadingMixIn` ForkingMixIn 和TCPServer/UDPServer的组合
+4. `ForkingTCPServer/ForkingUDPServer` ForkingMixIn 和TCPServer/UDPServer的组合
 5. `ThreadingTCPServer/ThreadingUDPServer` ThreadingMixIn和TCPServer/UDPServer的组合.
 6. `BaseRequestHandler` 包含处理服务请求的核心功能. 这个类只用于派生, 所以不会生成这个类的实例.
 7. `StreamRequestHandler/DatagramRequestHandler` 用于TCP/UDP服务器的服务处理工具.
