@@ -183,3 +183,18 @@ SELECT e.emp_name, s.date, s.basic+s.award AS money FROM employees as e JOIN sal
 SELECT count(*) FROM departments;
 ```
 
+## PyMySQL模块
+
+安装`pip install pymysql`
+可以设置`~/.pip/pip.conf`为:
+
+```
+[global]
+index-url = http://mirrors.aliyun.com/pypi/simple/
+[install]
+trusted-host = mirrors.aliyun.com
+```
+
+## 下周
+
+sql archemy...
