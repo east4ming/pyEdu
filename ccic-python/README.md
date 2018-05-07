@@ -1,5 +1,11 @@
 # Python 企业开发
 
+## 文件注释
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+```
+
 ## 数据类型与操作
 
 - 整形
@@ -18,8 +24,36 @@
     - 列表拓展： `extend(list)`
     - 删除： `pop(index)` `remove(value)`
     - 修改元素：索引赋值
+- 元组： 不可变有序
+    - 里边可以嵌套list， 但是不建议
+- 字典： dict
+    - 修改： 通过key-value修改
+    - 添加元素： 直接添加key-value    
+- 集合： set
+    - 交集： `&`
+    - 并集： `|`
+    - 差集： `-`
+    - 可以通过set去重
 - None：
     - 空的列表/元组
     - 整数： 0
     - 空的字典/集合
-    
+
+## 循环和遍历
+
+### for
+
+### while
+
+## 函数
+
+### 内置函数
+
+- `cmp()`
+- `hash()`
+- `len()`
+- `list()`
+- `max()`
+- `sum()`
+- `range()`
+- `tuple()`
