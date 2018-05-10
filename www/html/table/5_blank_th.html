@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>空的单元格</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Some text</td>
+            <td>Some text</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Some text</td>
+        </tr>
+    </table>
+
+    <p>正如您看到的, 其中一个单元没有边框. 这是因为它是空的. 在该单元中插入一个空格后,仍然没有边框.</p>
+    <p>我们的技巧是在单元中插入一个 no-breakding 空格</p>
+    <p>no-breaking 空格是一个字符实体. 如果您不清楚什么是字符实体,清阅读关于字符实体的章节.</p>
+    <p>no-breaking 空格由和号开始"&", 然后是字符"nbsp", 并以分号结尾";".</p>
+</body>
+</html>
