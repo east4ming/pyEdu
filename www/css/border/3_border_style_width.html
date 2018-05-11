@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>边框宽度和格式在一个声明里</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        p.one {
+            border-style: solid;
+            border-width: 5px;
+        }
+        p.two {
+            border-style: solid;
+            border-width: thick;
+        }
+        p.three {
+            border-style: solid;
+            border-width: 5px 10px;
+
+        }
+        p.four {
+            border-style: solid;
+            border-width: 5px 10px 1px;
+        }
+        p.five {
+            border-style: solid;
+            border-width: 5px 10px 1px medium;
+        }
+    </style>
+</head>
+<body>
+    <p class="one">Some text</p>
+    <p class="two">Some text</p>
+    <p class="three">Some text</p>
+    <p class="four">Some text</p>
+    <p class="five">Some text</p>
+
+    <p><b>注释:</b>"border-width" 属性如果单独使用的话是不会起作用的. 清首先使用"border-style"属性来设置边框.</p>
+</body>
+</html>

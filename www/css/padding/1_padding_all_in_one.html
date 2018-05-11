@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>所有内边距属性在一个声明中</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        td.test1 {padding: 1.5cm}
+        td.test2 {padding: 0.5cm 2.5cm}
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td class="test1">这个表格单元的每个边框拥有相等的内边距</td>
+        </tr>
+    </table>
+
+    <table border="1">
+        <tr>
+            <td class="test2">这个表格单元的上和下内边距是0.5cm, 左和右内边距是2.5cm</td>
+        </tr>
+    </table>
+</body>
+</html>
