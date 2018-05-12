@@ -9,7 +9,8 @@
         <label>用户名</label><input name="name" onblur="checkname()" type="text">
         <label>密码</label><input name="password" type="password">
         <label>验证码</label><input id="code" type="text">
-        <button onclick="getValue()">button</button>
+        <!--<button onclick="getValue()">button</button>-->
+        <button onsubmit="checkform()" type="submit">提交</button>
     </form>
 
     <script type="text/javascript">
@@ -27,6 +28,10 @@
             if (n.length<4) {
                 alert("用户名长度最少4位,请重新输入");
             }
+        }
+        function checkform() {
+            checkname();
+            return false;
         }
     </script>
 </body>
