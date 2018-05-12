@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        //一般情况下不放到head里
+        document.write('hello world');
+    </script>
+</head>
+<body>
+    <div onclick="alert(1);">
+        <div onclick="alert(2);">
+            <!--事件调用方式: 冒泡-->
+            <input type="text">
+        </div>
+    </div>
+    <script>
+        document.write('this is text');
+        function add(a, b) {
+            return a+b;
+        }
+        document.write(add(5,3));
+    </script>
+</body>
+</html>

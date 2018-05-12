@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业1</title>
+</head>
+<body>
+    <form>
+        <label>用户名</label><input name="name" onblur="checkname()" type="text">
+        <label>密码</label><input name="password" type="password">
+        <label>验证码</label><input id="code" type="text">
+        <button onclick="getValue()">button</button>
+    </form>
+
+    <script type="text/javascript">
+        function getValue() {
+            var inputs;
+            inputs = document.getElementsByTagName('input');
+            for (i=0;i<inputs.length;i++) {
+                x = inputs[i].value;
+                alert(x);
+            }
+        }
+        function checkname() {
+            //只有一个值, 所以下标是0
+            var n=document.getElementsByName('name')[0].value;
+            if (n.length<4) {
+                alert("用户名长度最少4位,请重新输入");
+            }
+        }
+    </script>
+</body>
+</html>
