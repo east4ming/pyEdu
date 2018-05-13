@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>The Light bulb</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        function changeImage() {
+            element=document.getElementById("myimage");
+            if (element.src.match("bulbon")) {
+                element.src="eg_bulboff.gif";
+            } else {
+                element.src="eg_bulbon.gif";
+            }
+        }
+    </script>
+
+    <img id="myimage" onclick="changeImage()" src="eg_bulboff.gif">
+
+    <p>点击灯泡来点亮或熄灭这盏灯</p>
+</body>
+</html>
