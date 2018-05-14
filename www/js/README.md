@@ -297,6 +297,311 @@ person.eyecolor="blue";
 
 > 使用 camel-case 标记法的函数是很常见的。您会经常看到 someMethod() 这样的函数名
 
-# TODO: 函数
+## 函数
 
-http://www.w3school.com.cn/js/js_functions.asp
+### JavaScript 函数语法
+
+```javascript
+function functionname()
+{
+这里是要执行的代码
+}
+```
+
+可以在某事件发生时直接调用函数（比如当用户点击按钮时），并且可由 JavaScript 在任何位置进行调用。
+
+提示：JavaScript 对大小写敏感。关键词 function 必须是小写的，并且必须以与函数名称相同的大小写来调用函数。
+
+### 调用带参数的函数
+
+```javascript
+function myFunction(var1,var2)
+{
+这里是要执行的代码
+}
+```
+
+### 带有返回值的函数
+
+```javascript
+function myFunction()
+{
+var x=5;
+return x;
+}
+
+var myVar=myFunction();
+
+function myFunction(a,b)
+{
+return a*b;
+}
+
+document.getElementById("demo").innerHTML=myFunction(4,3);
+```
+
+您仅仅希望退出函数时 ，也可使用 return 语句。返回值是可选的
+
+### 局部 JavaScript 变量
+
+在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。
+
+您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。
+
+只要函数运行完毕，本地变量就会被删除。
+
+### 全局 JavaScript 变量
+
+在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。
+
+### JavaScript 变量的生存期
+
+JavaScript 变量的生命期从它们被声明的时间开始。
+
+局部变量会在函数运行以后被删除。
+
+全局变量会在页面关闭后被删除。
+
+### 向未声明的 JavaScript 变量来分配值
+
+如果您把值赋给尚未声明的变量，该变量将被自动作为全局变量声明。
+如: `carname='Volvo';` 将声明一个全局变量 carname，即使它在函数内执行。
+
+**千万不要这么做!!!!**
+
+## JS 运算符
+
+运算符 = 用于赋值。
+运算符 + 用于加值。
+
+- ++ 累加
+- -- 递减
+- %= x%=y x=x%y
+
+### 用于字符串的 + 运算符
+
+`+` 运算符用于把文本值或字符串变量加起来（连接起来）。
+**如果把数字与字符串相加，结果将成为字符串。**
+
+## JS 比较和逻辑运算符
+
+- == 等于 
+- === 全等（值和类型）`x=5; x===5 为 true；x==="5" 为 false`
+- != 不等于
+
+### 逻辑运算符
+
+- && and
+- || or
+- ! not
+
+### 条件运算符
+
+`variablename=(condition)?trueValue:falseValue `
+
+## JavaScript If...Else 语句
+
+- if...else if....else 语句 - 使用该语句来选择多个代码块之一来执行
+- switch 语句 - 使用该语句来选择多个代码块之一来执行
+
+```javascript
+if (条件 1)
+  {
+  当条件 1 为 true 时执行的代码
+  }
+else if (条件 2)
+  {
+  当条件 2 为 true 时执行的代码
+  }
+else
+  {
+  当条件 1 和 条件 2 都不为 true 时执行的代码
+  }
+```
+
+## JavaScript Switch 语句
+
+```javascript
+switch(n)
+{
+case 1:
+  执行代码块 1
+  break;
+case 2:
+  执行代码块 2
+  break;
+default:
+  n 与 case 1 和 case 2 不同时执行的代码
+}
+```
+
+工作原理：首先设置表达式 n（通常是一个变量）。随后表达式的值会与结构中的每个 case 的值做比较。
+如果存在匹配，则与该 case 关联的代码块会被执行。请使用 break 来阻止代码自动地向下一个 case 运行。
+
+```javascript
+var day=new Date().getDay();
+switch (day)
+{
+case 0:
+  x="Today it's Sunday";
+  break;
+case 1:
+  x="Today it's Monday";
+  break;
+case 2:
+  x="Today it's Tuesday";
+  break;
+case 3:
+  x="Today it's Wednesday";
+  break;
+case 4:
+  x="Today it's Thursday";
+  break;
+case 5:
+  x="Today it's Friday";
+  break;
+case 6:
+  x="Today it's Saturday";
+  break;
+}
+```
+
+### default 关键词
+
+请使用 default 关键词来规定匹配不存在时做的事情：
+
+```javascript
+var day=new Date().getDay();
+switch (day)
+{
+case 6:
+  x="Today it's Saturday";
+  break;
+case 0:
+  x="Today it's Sunday";
+  break;
+default:
+  x="Looking forward to the Weekend";
+}
+```
+
+## For循环
+
+```javascript
+for (var i=0;i<cars.length;i++)
+{
+document.write(cars[i] + "<br>");
+}
+```
+
+### 不同类型的循环
+
+JavaScript 支持不同类型的循环：
+
+- for - 循环代码块一定的次数
+- for/in - 循环遍历**对象的属性**
+- while - 当指定的条件为 true 时循环指定的代码块
+- do/while - 同样当指定的条件为 true 时循环指定的代码块
+
+### For/In 循环
+
+```javascript
+var person={fname:"John",lname:"Doe",age:25};
+
+for (x in person)
+  {
+  txt=txt + person[x];
+  }
+```
+
+## While 循环
+
+### do/while 循环
+
+do/while 循环是 while 循环的变体。
+该循环会执行一次代码块，在检查条件是否为真之前，
+然后如果条件为真的话，就会重复这个循环。
+
+## Break 和 Continue 语句
+
+break 语句用于跳出循环。
+continue 用于跳过循环中的一个迭代。
+
+### JavaScript 标签
+
+```javascript
+label:
+语句
+```
+可以对 JavaScript 语句进行标记。
+continue 语句（带有或不带标签引用）只能用在循环中。
+break 语句（不带标签引用），只能用在循环或 switch 中。
+通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：
+
+```javascript
+cars=["BMW","Volvo","Saab","Ford"];
+list:
+{
+document.write(cars[0] + "<br>");
+document.write(cars[1] + "<br>");
+document.write(cars[2] + "<br>");
+break list;
+document.write(cars[3] + "<br>");
+document.write(cars[4] + "<br>");
+document.write(cars[5] + "<br>");
+}
+```
+
+## JavaScript 错误 - Throw、Try 和 Cat
+
+```javascript
+try
+  {
+  //在这里运行代码
+  }
+catch(err)
+  {
+  //在这里处理错误
+  }
+```
+
+### Throw 语句
+
+throw 语句允许我们创建自定义错误。
+正确的技术术语是：创建或抛出异常（exception）。
+如果把 throw 与 try 和 catch 一起使用，那么您能够控制程序流，并生成自定义的错误消息。
+
+> 见*7_throw.html*
+
+## 表单验证
+
+JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证
+
+### JavaScript 表单验证
+
+被 JavaScript 验证的这些典型的表单数据有：
+
+- 用户是否已填写表单中的必填项目？
+- 用户输入的邮件地址是否合法？
+- 用户是否已输入合法的日期？
+- 用户是否在数据域 (numeric field) 中输入了文本？
+
+### 必填（或必选）项目
+
+下面的函数用来检查用户是否已填写表单中的必填（或必选）项目。
+假如必填或必选项为空，那么警告框会弹出，并且函数的返回值为 false，否则函数的返回值则为 true（意味着数据没有问题）：
+
+> 见*8_validate_required.html*
+
+### E-mail 验证
+
+下面的函数检查输入的数据是否符合电子邮件地址的基本语法。
+
+意思就是说，输入的数据必须包含 @ 符号和点号(.)。
+同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号：
+
+> 见*9_validate_email.html*
+
+# TODO
+
+http://www.w3school.com.cn/js/js_htmldom.asp
