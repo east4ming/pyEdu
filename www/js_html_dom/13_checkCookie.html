@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>检查cookie</title>
+    <meta charset="UTF-8">
+</head>
+<body onload="checkCookies()">
+    <script type="text/javascript">
+        function checkCookies() {
+            if (navigator.cookieEnabled==true) {
+                alert("已启用 cookie");
+            } else {
+                alert("未启用 cookie")
+            }
+        }
+    </script>
+
+    <p>提示框会告诉你, 浏览器是否已启用cookie </p>
+</body>
+</html>

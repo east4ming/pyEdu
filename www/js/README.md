@@ -601,7 +601,3 @@ JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输
 同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号：
 
 > 见*9_validate_email.html*
-
-# TODO
-
-http://www.w3school.com.cn/js/js_htmldom.asp

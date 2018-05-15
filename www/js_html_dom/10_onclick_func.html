@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>从事件处理器调用函数</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function changeText(id) {
+            id.innerHTML="谢谢!";
+        }
+    </script>
+</head>
+<body>
+    <h1 onclick="changeText(this)">请点击该文本</h1>
+</body>
+</html>

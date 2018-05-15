@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>通过标签名查找HTML元素</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <p>Hello world!</p>
+    <div id="main">
+        <p>The DOM is very useful.</p>
+        <p>本例子演示 <b>getElementByTagName</b> 方法.</p>
+    </div>
+
+    <script type="text/javascript">
+        var x=document.getElementById("main");
+        var y=x.getElementsByTagName("p");
+        document.write('id 为"main"的div中的第一段文本是: ' + y[0].innerHTML);
+    </script>
+</body>
+</html>

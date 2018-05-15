@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>向元素button分配onclick事件</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <p>点击按钮就可以执行<em>displayDate()</em> 函数.</p>
+
+    <button onclick="displayDate()">点击这里</button>
+
+    <script type="text/javascript">
+        function displayDate() {
+            document.getElementById("demo").innerHTML=Date();
+        }
+    </script>
+
+    <p id="demo"></p>
+</body>
+</html>
