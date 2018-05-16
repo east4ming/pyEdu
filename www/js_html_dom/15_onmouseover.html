@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>鼠标移动</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)"
+         style="background-color: green;width:120px;height: 20px;padding: 40px;color: #ffffff;">
+        把鼠标移动到上面
+    </div>
+
+    <script type="text/javascript">
+        function mOver(obj) {
+            {obj.innerHTML="谢谢"}
+        }
+        function mOut(obj) {
+            obj.innerHTML="把鼠标移动到上面"
+        }
+    </script>
+</body>
+</html>

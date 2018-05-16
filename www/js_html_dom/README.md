@@ -139,3 +139,44 @@ onchange 事件常结合对输入字段的验证来使用。
 > *14_upperCase_onchange.html*
 
 ### onmouseover 和 onmouseout 事件
+
+onmouseover 和 onmouseout 事件可用于在用户的鼠标移至 HTML 元素上方或移出元素时触发函数。
+
+> 15_onmouseover.html
+
+### onmousedown、onmouseup 以及 onclick 事件
+
+onmousedown, onmouseup 以及 onclick 构成了鼠标点击事件的所有部分。
+首先当点击鼠标按钮时，会触发 onmousedown 事件，当释放鼠标按钮时，会触发 onmouseup 事件，
+最后，当完成鼠标点击时，会触发 onclick 事件。
+
+> 16_onmousedown.html
+> 17_lighton.html
+> 18_onload.html
+> 19_onfocus.html
+> 20_change_color_onmouseover.html
+
+## JavaScript HTML DOM 元素（节点）
+
+添加和删除节点（HTML 元素）。
+
+### 创建新的 HTML 元素
+
+如需向 HTML DOM 添加新元素，您必须首先创建该元素（元素节点），然后向一个已存在的元素追加该元素。
+
+> 21_appendChild.html
+
+### 删除已有的 HTML 元素
+
+如需删除 HTML 元素，您必须首先获得该元素的父元素：
+
+> 22_removeChild.html
+> 提示：如果能够在不引用父元素的情况下删除某个元素，就太好了。
+>   不过很遗憾。DOM 需要清楚您需要删除的元素，以及它的父元素。
+>   这是常用的解决方案：找到您希望删除的子元素，然后使用其 parentNode 属性来找到父元素：
+> ```javascript
+>  var child=document.getElementById("p1");
+>  child.parentNode.removeChild(child);
+>  ```
+
+# TODO: JS对象

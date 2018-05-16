@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>s删除已有的HTML元素</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+   <div id="div1">
+       <p id="p1">这是一个段落. </p>
+       <p id="p2">这是另一个段落. </p>
+   </div>
+
+    <script type="text/javascript">
+        var parent=document.getElementById("div1");
+        var child=document.getElementById("p1");
+        parent.removeChild(child);
+    </script>
+</body>
+</html>

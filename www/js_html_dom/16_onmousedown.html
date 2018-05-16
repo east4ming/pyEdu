@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>鼠标点击相关事件</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div onmousedown="mDown(this)" onmouseup="mUp(this)"
+         style="background-color: green;color: white;width: 90px;height: 20px;
+         padding: 40px;font-size: 12px;">请点击这里</div>
+
+    <script type="text/javascript">
+        function mDown(obj) {
+            obj.style.backgroundColor="#1ec5e5";
+            obj.innerHTML="请释放鼠标按钮"
+        }
+        function mUp(obj) {
+            obj.style.backgroundColor="green";
+            obj.innerHTML="请按下鼠标按钮"
+        }
+    </script>
+</body>
+</html>

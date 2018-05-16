@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>追加段落</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">这是一个段落.</p>
+        <p id="p2">这是另一个段落.</p>
+    </div>
+
+    <script type="text/javascript">
+        <!--创建新的p元素-->
+        var para=document.createElement("p");
+        //如需要向p元素添加文本, 必须首先创建文本节点. 这段代码创建了一个文本节点
+        var node=document.createTextNode("这是新段落.");
+        //然后必须向p元素追加这个文本节点
+        para.appendChild(node);
+        //最后必须向一个已有的元素追加这个新元素. 这段代码找到一个已有的元素
+        var element=document.getElementById("div1");
+        //向这个已有的元素追加新元素.
+        element.appendChild(para);
+    </script>
+</body>
+</html>

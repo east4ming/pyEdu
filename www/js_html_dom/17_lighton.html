@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>点亮这盏灯</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script type="text/javascript">
+        function lighton() {
+            document.getElementById('myimage').src="eg_bulbon.gif";
+        }
+        function lightoff() {
+            document.getElementById('myimage').src="eg_bulboff.gif";
+        }
+    </script>
+
+    <img id="myimage" onmousedown="lighton()" onmouseup="lightoff()" src="eg_bulboff.gif" />
+
+    <p>按住鼠标不放可以点亮这盏灯!</p>
+</body>
+</html>
