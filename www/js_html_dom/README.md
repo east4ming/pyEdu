@@ -178,5 +178,3 @@ onmousedown, onmouseup 以及 onclick 构成了鼠标点击事件的所有部分
 >  var child=document.getElementById("p1");
 >  child.parentNode.removeChild(child);
 >  ```
-
-# TODO: JS对象
