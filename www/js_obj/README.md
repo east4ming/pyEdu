@@ -137,4 +137,93 @@ for (x in person)
 
 ## JS Number对象
 
-http://www.w3school.com.cn/js/js_obj_number.asp
+JavaScript 只有一种数字类型。
+可以使用也可以不使用小数点来书写数字。
+
+### JavaScript 数字
+
+可以使用也可以不使用小数点来书写数字。
+
+```javascript
+var pi=3.14;    // 使用小数点
+var x=34;       // 不使用小数点
+//极大或极小可以通过科学计数法来写
+var y=123e5;    // 12300000
+var z=123e-5;   // 0.00123
+```
+
+### 所有 JavaScript 数字均为 64 位
+
+JavaScript 不是类型语言。与许多其他编程语言不同，JavaScript 不定义不同类型的数字，比如整数、短、长、浮点等等。
+JavaScript 中的所有数字都存储为**根为 10 的 64 位（8 比特），浮点数**。
+
+### 精度
+
+整数（不使用小数点或指数计数法）最多为 15 位。
+小数的最大位数是 17，但是浮点运算并不总是 100% 准确：
+
+### 八进制和十六进制
+
+如果前缀为 0，则 JavaScript 会把数值常量解释为八进制数，如果前缀为 0 和 "x"，则解释为十六进制数。
+
+```javascript
+var y=0377;
+var z=0xFF;
+```
+
+> 提示：绝不要在数字前面写零，除非您需要进行八进制转换。
+
+### 数字属性和方法
+
+**属性**:
+- MAX VALUE             最大的数
+- MIN VALUE             最小的数
+- NEGATIVE INFINITIVE   负无穷大, 溢出时返回该值
+- POSITIVE INFINITIVE   正无穷大, 溢出时返回该值
+- NaN                   非数字值
+- prototype             使您有能力向对象添加属性和方法
+- constructor           返回对创建此对象的Number函数的引用
+
+**方法:**:
+- toExponential()       转换为指数计数法
+- toFixed()             转换为字符串, 结果的小数点后有指定位数的数字
+- toPrecision()         格式化为指定的长度
+- toString()            转换为字符串, 使用指定的基数
+- valueOf()             返回一个 Number 对象的基本数字值
+
+## JS 字符串(String)对象
+
+### JS String 对象 实例
+
+> 1. 计算字符串长度 2_js_string_length.html
+> 2. 为字符串添加样式 3_js_string_css.html
+
+#### indexOf() 方法
+
+用来定位字符串中某一个指定的字符首次出现的位置
+
+> 4_js_string_indexof.html
+
+#### 替换字符串中的字符 - replace()
+
+> 5_js_string_replace.html
+
+### String对象
+
+![](http://www.w3school.com.cn/jsref/jsref_obj_string.asp)
+
+## JS Date(日期)对象
+
+日期对象用于处理日期和时间。
+
+### JavaScript Date（日期）对象 实例
+
+#### 返回当日的日期和时间
+
+> 6_js_date_now.html
+
+> getTime(): 7_js_date_gettime.html
+> 使用`setFullYear()`设置具体的日期: 8_js_date_setfullyear.html
+> 使用`toUTCString()`将当日的日期(根据UTC)转换为字符串. 9_js_date_toutcstring.html
+> 使用`getDay()`和数组来显示星期, 而不仅仅是数字. 10_js_date_getday.html
+> 在网页上显示一个钟表: 11_js_date_clock.html

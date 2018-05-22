@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>在网页上显示钟表</title>
+    <meta charset="UTF-8">
+</head>
+<body onload="startTime()">
+    <script type="text/javascript">
+        function startTime() {
+            var today=new Date();
+            var h=today.getHours();
+            var m=today.getMinutes();
+            var s=today.getSeconds();
+            // add a zero in front of numbers<10
+            m=checkTime(m);
+            s=checkTime(s);
+            document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+            t=setTimeout('startTime()', 500);
+        }
+
+        function checkTime(i) {
+            if (i<10)
+                {i="0"+i};
+                return i;
+        }
+    </script>
+
+    <div id="txt"></div>
+</body>
+</html>
