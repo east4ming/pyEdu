@@ -227,3 +227,7 @@ var z=0xFF;
 > 使用`toUTCString()`将当日的日期(根据UTC)转换为字符串. 9_js_date_toutcstring.html
 > 使用`getDay()`和数组来显示星期, 而不仅仅是数字. 10_js_date_getday.html
 > 在网页上显示一个钟表: 11_js_date_clock.html
+
+### TODO
+
+![](http://www.w3school.com.cn/js/js_obj_date.asp)
