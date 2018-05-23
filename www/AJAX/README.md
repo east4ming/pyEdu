@@ -92,7 +92,151 @@ xmlhttp.send();
 
 > 1_ajax_get.html
 
-## TODO
+在上面的例子中，您可能得到的是缓存的结果。
+为了避免这种情况，请向 URL 添加一个唯一的 ID：
 
-AJAX http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp
-JSON http://www.w3school.com.cn/json/index.asp
+```javascript
+xmlhttp.open("GET","demo_get.asp?t=" + Math.random(),true);
+xmlhttp.send();
+```
+
+如果您希望通过 GET 方法发送信息，请向 URL 添加信息：
+
+```javascript
+xmlhttp.open("GET","demo_get2.asp?fname=Bill&lname=Gates",true);
+xmlhttp.send();
+```
+
+### POST请求
+
+如果需要像 HTML 表单那样 POST 数据，请使用 `setRequestHeader()` 来添加 HTTP 头。然后在 send() 方法中规定您希望发送的数据：
+
+```javascript
+xmlhttp.open("POST","ajax_test.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("fname=Bill&lname=Gates");
+```
+
+### url - 服务器上的文件
+
+open() 方法的 url 参数是服务器上文件的地址：
+`xmlhttp.open("GET","ajax_test.asp",true);`
+该文件可以是任何类型的文件，比如 .txt 和 .xml，或者服务器脚本文件，比如 .asp 和 .php （在传回响应之前，能够在服务器上执行任务）。
+
+### 异步 - True 或 False？
+
+AJAX 指的是异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+XMLHttpRequest 对象如果要用于 AJAX 的话，其 open() 方法的 async 参数必须设置为 true：
+
+`xmlhttp.open("GET","ajax_test.asp",true);`
+
+对于 web 开发人员来说，发送异步请求是一个巨大的进步。很多在服务器执行的任务都相当费时。AJAX 出现之前，这可能会引起应用程序挂起或停止。
+通过 AJAX，JavaScript 无需等待服务器的响应，而是：
+
+- 在等待服务器响应时执行其他脚本
+- 当响应就绪后对响应进行处理
+
+### Async = true
+
+当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数：
+
+```javascript
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","test1.txt",true);
+xmlhttp.send();
+```
+
+## AJAX - 服务器响应
+
+### 服务器响应
+
+如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。
+
+- responseText	获得字符串形式的响应数据。
+- responseXML	获得 XML 形式的响应数据。
+
+### responseText 属性
+
+如果来自服务器的响应并非 XML，请使用 responseText 属性。
+responseText 属性返回字符串形式的响应，因此您可以这样使用：
+`document.getElementById("myDiv").innerHTML=xmlhttp.responseText;`
+
+### responseXML 属性
+
+如果来自服务器的响应是 XML，而且需要作为 XML 对象进行解析，请使用 responseXML 属性：
+请求 books.xml 文件，并解析响应：
+
+```javascript
+xmlDoc=xmlhttp.responseXML;
+txt="";
+x=xmlDoc.getElementsByTagName("ARTIST");
+for (i=0;i<x.length;i++)
+  {
+  txt=txt + x[i].childNodes[0].nodeValue + "<br />";
+  }
+document.getElementById("myDiv").innerHTML=txt;
+```
+
+> 2_ajax_xml.html
+
+## AJAX - onreadystatechange 事件
+
+### onreadystatechange 事件
+
+当请求被发送到服务器时，我们需要执行一些基于响应的任务。
+每当 readyState 改变时，就会触发 onreadystatechange 事件。
+readyState 属性存有 XMLHttpRequest 的状态信息。
+下面是 XMLHttpRequest 对象的三个重要的属性：
+
+- onreadystatechange	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+- readyState	存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+    - 0: 请求未初始化
+    - 1: 服务器连接已建立
+    - 2: 请求已接收
+    - 3: 请求处理中
+    - 4: 请求已完成，且响应已就绪
+- status	
+    - 200: "OK"
+    - 404: 未找到页面
+    
+在 onreadystatechange 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。
+当 readyState 等于 4 且状态为 200 时，表示响应已就绪：
+
+```javascript
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+```
+
+> 注释：onreadystatechange 事件被触发 5 次（0 - 4），对应着 readyState 的每个变化。
+
+### 使用 Callback 函数
+
+callback 函数是一种以参数形式传递给另一个函数的函数。
+如果您的网站上存在多个 AJAX 任务，那么您应该为创建 XMLHttpRequest 对象编写一个标准的函数，并为每个 AJAX 任务调用该函数。
+该函数调用应该包含 URL 以及发生 onreadystatechange 事件时执行的任务（每次调用可能不尽相同）：
+
+```javascript
+function myFunction()
+{
+loadXMLDoc("ajax_info.txt",function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  });
+}
+```
+
+> 3_ajax_callback.html
