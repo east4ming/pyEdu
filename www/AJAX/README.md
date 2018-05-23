@@ -91,3 +91,8 @@ xmlhttp.send();
 ```
 
 > 1_ajax_get.html
+
+## TODO
+
+AJAX http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp
+JSON http://www.w3school.com.cn/json/index.asp
